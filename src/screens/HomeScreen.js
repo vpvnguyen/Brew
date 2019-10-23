@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
     // picker location sets initial picker selector to the first city in the data set for display on button
     this.setState({
       cityLocations: response.data,
-      pickerLocation: response.data[0].name
+      pickerLocation: response.data[0]
     })
     console.log('City Locations', this.state.cityLocations)
   }
@@ -48,7 +48,10 @@ class HomeScreen extends React.Component {
 
         <View style={{ flex: 3, justifyContent: "space-around" }}>
           <Picker
-            selectedValue={this.state.language}
+            // do we need selected value prop here?
+            // selectedValue={this.state.cityLocations[0].name}
+
+
             // callback changes the value of state for dynamic button
             onValueChange={(itemValue, itemIndex) =>
               this.setState({ pickerLocation: itemValue })
@@ -63,8 +66,16 @@ class HomeScreen extends React.Component {
 
         <View style={{ flex: 3, justifyContent: "space-around" }}>
           <Button
-            title={`Go to ${this.state.pickerLocation}`}
-            onPress={() => navigate('MapView')}
+            title={`Go to ${this.state.pickerLocation.name}`}
+            onPress={() => navigate('MapView', {
+              locationName: this.state.pickerLocation.name,
+              initialRegion: {
+                latitude: this.state.pickerLocation.latitude,
+                longitude: this.state.pickerLocation.longitude,
+                latitudeDelta: 0.1,
+                longitudeDelta: 0.1,
+              }
+            })}
           />
         </View>
 
@@ -76,7 +87,8 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   wrapperView: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#ACACAC'
   }
 })
 
