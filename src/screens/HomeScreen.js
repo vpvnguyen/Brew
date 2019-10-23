@@ -94,8 +94,7 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   wrapperView: {
-    flex: 1,
-    backgroundColor: '#ACACAC'
+    flex: 1
   }
 })
 
