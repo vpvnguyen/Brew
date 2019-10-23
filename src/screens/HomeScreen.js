@@ -12,7 +12,7 @@ class HomeScreen extends React.Component {
     this.state = {
       cityLocations: [],
       pickerLocation: '',
-      userLocation: {}
+      userLocation: undefined
     }
   }
 
@@ -43,7 +43,9 @@ class HomeScreen extends React.Component {
         <View style={{ flex: 3, justifyContent: "space-around" }}>
           <Button
             title="Current Location"
-            onPress={() => navigate('MapView')}
+            onPress={() => navigate('MapScreen')}
+            // if userlocation hasnt been changed from its default undfined value button is disabaled
+            disabled={this.state.userLocation === undefined}
           />
         </View>
 
@@ -72,7 +74,7 @@ class HomeScreen extends React.Component {
         <View style={{ flex: 3, justifyContent: "space-around" }}>
           <Button
             title={`Go to ${this.state.pickerLocation.name}`}
-            onPress={() => navigate('MapView', {
+            onPress={() => navigate('MapScreen', {
               locationName: this.state.pickerLocation.name,
               initialRegion: {
                 latitude: this.state.pickerLocation.latitude,

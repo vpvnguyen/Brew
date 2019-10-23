@@ -1,11 +1,11 @@
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import HomeScreen from './src/screens/HomeScreen'
-import MapView from './src/screens/MapView'
+import MapScreen from './src/screens/MapScreen'
 
 const MainNavigator = createStackNavigator({
   Home: {screen: HomeScreen},
-  MapView: {screen: MapView}
+  MapScreen: {screen: MapScreen}
 })
 
 const App = createAppContainer(MainNavigator)
