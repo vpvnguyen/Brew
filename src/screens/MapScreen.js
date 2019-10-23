@@ -1,10 +1,14 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { View, StyleSheet, StatusBar } from 'react-native'
+import MapView, { Marker, Callout, Text, PROVIDER_GOOGLE } from 'react-native-maps'
+import promotions from '../api/promotions'
 
 class MapScreen extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            promotions: []
+        }
     }
 
     //Header style with paramaters from navigation
@@ -13,23 +17,54 @@ class MapScreen extends React.Component {
             title: navigation.getParam('locationName'),
             headerStyle: {
                 backgroundColor: '#2C1654',
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-              }
+                color: '#fff'
+            }
         }
+    }
+
+    getAllPromotions = async () => {
+        const { navigation } = this.props
+        const city = navigation.getParam('locationName')
+        const response = await promotions.get(`/${city}`)
+        // picker location sets initial picker selector to the first city in the data set for display on button
+        this.setState({
+            promotions: response.data
+        })
+        console.log(this.state, "promotions this state")
+    }
+
+    componentDidMount() {
+        this.getAllPromotions()
     }
 
     render() {
         const { navigation } = this.props
         return (
             <View style={styles.container}>
+                <StatusBar barStyle="light-content" />
                 <MapView
                     provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                     style={styles.map}
                     region={navigation.getParam('initialRegion')}
                 >
+                    {this.state.promotions !== 0 && this.state.promotions.map((business, i) => {
+                        return (
+                            <Marker
+                                key={i}
+                                coordinate={{
+                                    latitude: business.latitude,
+                                    longitude: business.longitude
+                                }}
+                                title={business.name}
+                                description={business.address}
+                            >
+                            </Marker>
+                        )
+                    })}
                 </MapView>
             </View>
         )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button, Picker } from 'react-native'
+import { View, Text, StyleSheet, Button, Picker, StatusBar } from 'react-native'
 import allCities from '../api/allCities'
 
 // Hides unimportant warning
@@ -24,6 +24,7 @@ class HomeScreen extends React.Component {
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
+      color: '#fff'
     }
   }
 
@@ -38,7 +39,6 @@ class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log('comp did mount')
     this.getAllCities()
   }
 
@@ -46,6 +46,8 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View style={styles.wrapperView}>
+
+        <StatusBar barStyle="light-content" />
 
         <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FF6464" }}>
           <Button
@@ -57,7 +59,7 @@ class HomeScreen extends React.Component {
         </View>
 
         <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FDBF50" }}>
-          <Text style={{alignSelf: "center"}}>or browse cities</Text>
+          <Text style={{ alignSelf: "center" }}>or browse cities</Text>
           <Picker
             // do we need selected value prop here?
             // selectedValue={this.state.cityLocations[0].name}
