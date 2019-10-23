@@ -17,7 +17,14 @@ class HomeScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'HomeScreen',
+    title: 'Turnt Up',
+    headerStyle: {
+      backgroundColor: '#2C1654',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
   }
 
   getAllCities = async () => {
@@ -40,7 +47,7 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.wrapperView}>
 
-        <View style={{ flex: 3, justifyContent: "space-around" }}>
+        <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FF6464" }}>
           <Button
             title="Current Location"
             onPress={() => navigate('MapScreen')}
@@ -49,14 +56,10 @@ class HomeScreen extends React.Component {
           />
         </View>
 
-        <View style={{ flex: 3, justifyContent: "space-around", alignItems: "center"}}>
-          <Text>or</Text>
-        </View>
-
-        <View style={{ flex: 3, justifyContent: "space-around" }}>
+        <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FDBF50" }}>
           <Picker
             // do we need selected value prop here?
-            selectedValue={this.state.cityLocations[0].name}
+            // selectedValue={this.state.cityLocations[0].name}
 
 
             // callback changes the value of state for dynamic button
@@ -71,7 +74,7 @@ class HomeScreen extends React.Component {
           </Picker>
         </View>
 
-        <View style={{ flex: 3, justifyContent: "space-around" }}>
+        <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#00BE65" }}>
           <Button
             title={`Go to ${this.state.pickerLocation.name}`}
             onPress={() => navigate('MapScreen', {

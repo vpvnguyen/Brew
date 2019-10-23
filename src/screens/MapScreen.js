@@ -12,8 +12,12 @@ class MapScreen extends React.Component {
         return {
             title: navigation.getParam('locationName'),
             headerStyle: {
-                backgroundColor: '#ffffff'
-            }
+                backgroundColor: '#2C1654',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              }
         }
     }
 
