@@ -17,7 +17,7 @@ class HomeScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Turnt Up',
+    title: 'TurntUp',
     headerStyle: {
       backgroundColor: '#2C1654',
     },
@@ -49,7 +49,7 @@ class HomeScreen extends React.Component {
 
         <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FF6464" }}>
           <Button
-            title="Current Location"
+            title="Use Current Location"
             onPress={() => navigate('MapScreen')}
             // if userlocation hasnt been changed from its default undfined value button is disabaled
             disabled={this.state.userLocation === undefined}
@@ -57,6 +57,7 @@ class HomeScreen extends React.Component {
         </View>
 
         <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FDBF50" }}>
+          <Text style={{alignSelf: "center"}}>or browse cities</Text>
           <Picker
             // do we need selected value prop here?
             // selectedValue={this.state.cityLocations[0].name}
