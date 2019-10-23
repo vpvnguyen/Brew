@@ -56,7 +56,7 @@ class HomeScreen extends React.Component {
         <View style={{ flex: 3, justifyContent: "space-around" }}>
           <Picker
             // do we need selected value prop here?
-            // selectedValue={this.state.cityLocations[0].name}
+            selectedValue={this.state.cityLocations[0].name}
 
 
             // callback changes the value of state for dynamic button
