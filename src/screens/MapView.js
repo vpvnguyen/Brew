@@ -4,26 +4,34 @@ import { View, Text, StyleSheet } from 'react-native'
 class MapView extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            location: '',
+            coords: {}
+        }
+    }
+
+    componentDidMount() {
+        const { navigation } = this.props
+
+        this.setState({
+            location: navigation.getParam('locationName'),
+            coords: navigation.getParam('initialRegion')
+        })
     }
 
     //Header style with paramaters from navigation
-    static navigationOptions = ({ navigation }) => {
-        const location = navigation.getParam('locationName')
+    static navigationOptions = () => {
         return {
-          title: location,
-          headerStyle: {
-            backgroundColor: '#ffffff'
-          }
+            title: this.state.location,
+            headerStyle: {
+                backgroundColor: '#ffffff'
+            }
         }
-      }   
+    }
 
     render() {
 
-        const { navigation } = this.props
-
-        console.log(navigation.getParam('locationName'))
-        console.log("Passed Paramaters", )
-
+        console.log('state', this.state)
 
         return (
             <View>

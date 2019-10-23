@@ -2,12 +2,17 @@ import React from 'react'
 import { View, Text, StyleSheet, Button, Picker } from 'react-native'
 import allCities from '../api/allCities'
 
+// Hides unimportant warning
+import { YellowBox } from 'react-native'
+YellowBox.ignoreWarnings(['RCTRootView cancelTouches'])
+
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       cityLocations: [],
-      pickerLocation: ''
+      pickerLocation: '',
+      userLocation: {}
     }
   }
 
