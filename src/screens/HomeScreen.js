@@ -43,6 +43,7 @@ class HomeScreen extends React.Component {
   }
 
   render() {
+
     const { navigate } = this.props.navigation
     return (
       <View style={styles.wrapperView}>
@@ -60,18 +61,21 @@ class HomeScreen extends React.Component {
 
         <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FDBF50" }}>
           <Text style={{ alignSelf: "center" }}>or browse cities</Text>
+
           <Picker
-            // do we need selected value prop here?
-            // selectedValue={this.state.cityLocations[0].name}
-
-
-            // callback changes the value of state for dynamic button
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({ pickerLocation: itemValue })
+            selectedValue={this.state.pickerLocation}
+            onValueChange={(itemValue, itemIndex) => {
+              // use the picker item index to set the new selected value to the index value of cityLocations
+              // in state the picker index value correlates with cityLocations so this works
+              this.setState({ pickerLocation: this.state.cityLocations[itemIndex] })
+              console.log(this.state.pickerLocation, "picker location")
+            }
+              
             }>
+
             {this.state.cityLocations.map((element) => {
               return (
-                <Picker.Item label={element.name} value={element.name} key={element.name} />
+                <Picker.Item label={element.name} value={element} key={element.name} />
               )
             })}
           </Picker>
