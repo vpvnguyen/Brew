@@ -64,10 +64,12 @@ class MapScreen extends React.Component {
                                 description={business.address}
                             >
                                 <Callout
-                                onPress={() => navigate('MoreInfo')}
+                                onPress={() => navigate('MoreInfo', {
+                                    business
+                                })}
                                 >
                                     <View style={styles.callout}>
-                                        <Text style={{ fontSize: 20 }}>{business.name}</Text>
+                                        <Text style={{ fontSize: 17 }}>{business.name}</Text>
                                         <Text>{business.address}</Text>
                                         <Button
                                             title="Promotions"
@@ -94,8 +96,8 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
     },
     callout: {
-        width: 300,
-        height: 150,
+        width: 250,
+        height: 100,
         alignItems: 'center',
         justifyContent: 'space-around'
     }

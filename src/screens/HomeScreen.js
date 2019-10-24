@@ -89,8 +89,8 @@ class HomeScreen extends React.Component {
               initialRegion: {
                 latitude: this.state.pickerLocation.latitude,
                 longitude: this.state.pickerLocation.longitude,
-                latitudeDelta: 0.1,
-                longitudeDelta: 0.1,
+                latitudeDelta: 0.3,
+                longitudeDelta: 0.3,
               }
             })}
           />
