@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, StyleSheet, StatusBar } from 'react-native'
-import MapView, { Marker, Callout, Text, PROVIDER_GOOGLE } from 'react-native-maps'
+import { View, StyleSheet, StatusBar, Text, Button } from 'react-native'
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps'
 import promotions from '../api/promotions'
 
 class MapScreen extends React.Component {
@@ -42,6 +42,7 @@ class MapScreen extends React.Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation
         const { navigation } = this.props
         return (
             <View style={styles.container}>
@@ -62,6 +63,17 @@ class MapScreen extends React.Component {
                                 title={business.name}
                                 description={business.address}
                             >
+                                <Callout
+                                onPress={() => navigate('MoreInfo')}
+                                >
+                                    <View style={styles.callout}>
+                                        <Text style={{ fontSize: 20 }}>{business.name}</Text>
+                                        <Text>{business.address}</Text>
+                                        <Button
+                                            title="Promotions"
+                                        />
+                                    </View>
+                                </Callout>
                             </Marker>
                         )
                     })}
@@ -80,6 +92,12 @@ const styles = StyleSheet.create({
     },
     map: {
         ...StyleSheet.absoluteFillObject,
+    },
+    callout: {
+        width: 300,
+        height: 150,
+        alignItems: 'center',
+        justifyContent: 'space-around'
     }
 })
 
