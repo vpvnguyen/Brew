@@ -17,7 +17,7 @@ class HomeScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'TurntUp',
+    title: 'Brew',
     headerStyle: {
       backgroundColor: '#2C1654',
     },
