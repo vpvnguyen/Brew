@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.beerapp"
+        applicationId "com.brew"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

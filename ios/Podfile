@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'beerApp' do
-  # Pods for beerApp
+target 'Brew' do
+  # Pods for Brew
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'beerApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'beerAppTests' do
+  target 'BrewTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -48,10 +48,10 @@ target 'beerApp' do
   use_native_modules!
 end
 
-target 'beerApp-tvOS' do
-  # Pods for beerApp-tvOS
+target 'Brew-tvOS' do
+  # Pods for Brew-tvOS
 
-  target 'beerApp-tvOSTests' do
+  target 'Brew-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

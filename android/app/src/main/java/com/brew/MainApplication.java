@@ -1,4 +1,4 @@
-package com.beerapp;
+package com.brew;
 
 import android.app.Application;
 import android.content.Context;
