@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button, Picker, StatusBar } from 'react-native'
 import allCities from '../api/allCities'
+import AutocompleteLocation from './AutocompleteLocation'
 
 // Hides unimportant warning
 import { YellowBox } from 'react-native'
@@ -62,23 +63,7 @@ class HomeScreen extends React.Component {
         <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FDBF50" }}>
           <Text style={{ alignSelf: "center" }}>or browse cities</Text>
 
-          <Picker
-            selectedValue={this.state.pickerLocation}
-            onValueChange={(itemValue, itemIndex) => {
-              // use the picker item index to set the new selected value to the index value of cityLocations
-              // in state the picker index value correlates with cityLocations so this works
-              this.setState({ pickerLocation: this.state.cityLocations[itemIndex] })
-              console.log(this.state.pickerLocation, "picker location")
-            }
-              
-            }>
-
-            {this.state.cityLocations.map((element) => {
-              return (
-                <Picker.Item label={element.name} value={element} key={element.name} />
-              )
-            })}
-          </Picker>
+          {this.state.cityLocations ? <AutocompleteLocation cityLocation={this.state.cityLocations}/> : console.log('not mounted')}
         </View>
 
         <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#00BE65" }}>
