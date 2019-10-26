@@ -44,6 +44,7 @@ class AutocompleteLocation extends Component {
           placeholder="Enter Location"
           renderItem={name => (
             <TouchableOpacity onPress={() => this.setState({ query: name.item.name })}>
+              {console.log("name", name)}
               <Text style={styles.itemText}>{name.item.name}</Text>
             </TouchableOpacity>
           )}
