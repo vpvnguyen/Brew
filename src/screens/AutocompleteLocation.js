@@ -11,7 +11,8 @@ class AutocompleteLocation extends Component {
     };
   }
 
-  findFilm(query) {
+  //returns array of the locations that have the same sequence
+  findLocation(query) {
     if (query === "") {
       return [];
     }
@@ -23,7 +24,8 @@ class AutocompleteLocation extends Component {
 
   render() {
     const { query } = this.state;
-    const locations = this.findFilm(query);
+    //returns array of the locations that have the same sequence
+    const locations = this.findLocation(query);
     const comp = (a, b) => a.toLowerCase().trim() === b.toLowerCase().trim();
 
     return (
