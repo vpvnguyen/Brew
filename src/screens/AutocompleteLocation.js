@@ -2,13 +2,31 @@ import Autocomplete from "react-native-autocomplete-input";
 import React, { Component } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-class AutocompleteLocation extends Component {
+class AutocompleteLocation extends React.Component {
   constructor(props) {
     super(props);
+    console.log("props", this.props);
     this.state = {
       query: "",
-      locations: this.props.cityLocation
+      locations: []
     };
+  }
+
+  componentDidMount() {
+    console.log("auto", JSON.stringify(this.props.cityLocation));
+    this.setState({
+      locations: this.props.cityLocation
+    });
+  }
+
+  checkInput(text) {
+    this.setState({query:text})
+    console.log(text)
+    this.state.locations.map(location => {
+      if (location.name === text) {
+        this.props.handleCityChosen(text)
+      }
+    })
   }
 
   //returns array of the locations that have the same sequence
@@ -16,8 +34,8 @@ class AutocompleteLocation extends Component {
     if (query === "") {
       return [];
     }
-
     const locations = this.state.locations;
+
     const regex = new RegExp(`${query.trim()}`, "i");
     return locations.filter(location => location.name.search(regex) >= 0);
   }
@@ -26,26 +44,26 @@ class AutocompleteLocation extends Component {
     const { query } = this.state;
     //returns array of the locations that have the same sequence
     const locations = this.findLocation(query);
-    const comp = (a, b) => a.toLowerCase().trim() === b.toLowerCase().trim();
-
     return (
       <View style={styles.container}>
         <Autocomplete
           autoCapitalize="none"
           autoCorrect={false}
           containerStyle={styles.autocompleteContainer}
-          data={
-            locations.length === 1 && comp(query, locations[0].name)
-              ? []
-              : locations
-          }
+          data={locations}
           defaultValue={query}
-          onChangeText={text => this.setState({ query: text })}
+          onChangeText={text => this.checkInput(text)}
           placeholder="Enter Location"
           renderItem={name => (
-            <TouchableOpacity onPress={() => this.setState({ query: name.item.name })}>
+            <TouchableOpacity
+              onPress={() => {
+                this.checkInput(name.item.name)
+              }}
+            >
               {console.log("name", name)}
-              <Text style={styles.itemText}>{name.item.name}</Text>
+              <Text style={styles.itemText} >
+                {name.item.name}
+              </Text>
             </TouchableOpacity>
           )}
         />

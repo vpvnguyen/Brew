@@ -20,7 +20,8 @@ class HomeScreen extends React.Component {
     this.state = {
       cityLocations: [],
       pickerLocation: "",
-      userLocation: undefined
+      userLocation: undefined,
+      hasCities: false
     };
   }
 
@@ -36,8 +37,22 @@ class HomeScreen extends React.Component {
     }
   };
 
-  handleCityChosen(city) {
-    alert(city);
+  handleCityChosen = (city) => {
+    let cityInfo = ''
+
+    this.state.cityLocations.map(location => {
+      if (location.name === city) {
+        cityInfo = location
+      }
+    })
+
+    if (cityInfo !== '') {
+      this.setState({
+        pickerLocation: cityInfo
+      })
+    } else {
+      console.log('no location')
+    }
   }
 
   getAllCities = async () => {
@@ -45,7 +60,8 @@ class HomeScreen extends React.Component {
     // picker location sets initial picker selector to the first city in the data set for display on button
     this.setState({
       cityLocations: response.data,
-      pickerLocation: response.data[0]
+      pickerLocation: response.data[0],
+      hasCities: true
     });
     console.log("City Locations", this.state.cityLocations);
   };
@@ -84,11 +100,14 @@ class HomeScreen extends React.Component {
         >
           <Text style={{ alignSelf: "center" }}>or browse cities</Text>
 
-          {this.state.cityLocations ? (
+          {this.state.hasCities ? (
+            <>
+            {console.log('home', this.state.cityLocations)}
             <AutocompleteLocation
               cityLocation={this.state.cityLocations}
               handleCityChosen={this.handleCityChosen}
             />
+            </>
           ) : (
             console.log("not mounted")
           )}
