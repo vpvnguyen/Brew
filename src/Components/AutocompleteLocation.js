@@ -21,10 +21,17 @@ class AutocompleteLocation extends React.Component {
 
   checkInput(text) {
     this.setState({ query: text });
-    console.log(text);
+
     this.state.locations.map(location => {
       if (location.name === text) {
-        this.props.handleCityChosen(text);
+        this.props.navigate('MapScreen', {
+          locationName: location.name,
+          initialRegion: {
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.3,
+            longitudeDelta: 0.3
+        }})
       }
     });
   }
@@ -34,12 +41,11 @@ class AutocompleteLocation extends React.Component {
     if (query === "") {
       return [];
     }
-    if (query.includes('[') || query.includes(']')) {
-      return []
+    if (query.includes("[") || query.includes("]")) {
+      return [];
     }
-    const letters = /^[a-z]+$i/
+    const letters = /^[a-z]+$i/;
     if (letters.test(query)) {
-
       return [];
     }
 
@@ -52,12 +58,13 @@ class AutocompleteLocation extends React.Component {
   render() {
     const { query } = this.state;
     //returns array of the locations that have the same sequence
-    const locations = this.findLocation(query);
+    let locations = this.findLocation(query);
     return (
       <View style={styles.container}>
         <Autocomplete
           autoCapitalize="none"
           autoCorrect={false}
+          keyboardType="default"
           containerStyle={styles.autocompleteContainer}
           data={locations}
           defaultValue={query}
