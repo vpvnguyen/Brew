@@ -20,13 +20,13 @@ class AutocompleteLocation extends React.Component {
   }
 
   checkInput(text) {
-    this.setState({query:text})
-    console.log(text)
+    this.setState({ query: text });
+    console.log(text);
     this.state.locations.map(location => {
       if (location.name === text) {
-        this.props.handleCityChosen(text)
+        this.props.handleCityChosen(text);
       }
-    })
+    });
   }
 
   //returns array of the locations that have the same sequence
@@ -34,6 +34,15 @@ class AutocompleteLocation extends React.Component {
     if (query === "") {
       return [];
     }
+    if (query.includes('[') || query.includes(']')) {
+      return []
+    }
+    const letters = /^[a-z]+$i/
+    if (letters.test(query)) {
+
+      return [];
+    }
+
     const locations = this.state.locations;
 
     const regex = new RegExp(`${query.trim()}`, "i");
@@ -57,13 +66,11 @@ class AutocompleteLocation extends React.Component {
           renderItem={name => (
             <TouchableOpacity
               onPress={() => {
-                this.checkInput(name.item.name)
+                this.checkInput(name.item.name);
               }}
             >
               {console.log("name", name)}
-              <Text style={styles.itemText} >
-                {name.item.name}
-              </Text>
+              <Text style={styles.itemText}>{name.item.name}</Text>
             </TouchableOpacity>
           )}
         />
