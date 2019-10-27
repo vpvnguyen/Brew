@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, Button } from "react-native";
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -8,6 +8,10 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    return <Text>This is a test</Text>;
+    const { navigate } = this.props.navigation;
+
+    return <Button title="to the search Page" onPress={() => {navigate('EnterLocation')}}></Button>;
   }
 }
+
+export default HomeScreen;
