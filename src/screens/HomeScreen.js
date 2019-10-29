@@ -4,6 +4,9 @@ import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-n
 class HomeScreen extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            geoLocation: undefined
+        }
     }
     static navigationOptions = ({ navigation }) => {
         return {
@@ -48,6 +51,8 @@ class HomeScreen extends Component {
                     <Button
                         title={`Or Use Current Location`}
                         onPress={() => navigate('MapScreen')}
+                        // if userlocation hasnt been changed from its default undfined value button is disabaled
+                        disabled={this.state.userLocation === undefined}
                     />
                 </View>
             </View>

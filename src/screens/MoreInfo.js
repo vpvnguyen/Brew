@@ -10,10 +10,11 @@ class MoreInfo extends React.Component {
         return {
             title: navigation.getParam('business').name,
             headerStyle: {
-                backgroundColor: '#2C1654',
+                backgroundColor: '#FFAD00',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
+                fontSize: 25,
                 fontWeight: 'bold',
                 color: '#fff'
             }

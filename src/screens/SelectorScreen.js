@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button, Picker, StatusBar } from 'react-native'
+import { View, Text, StyleSheet, Button, Picker, StatusBar, TouchableOpacity } from 'react-native'
 import allCities from '../api/allCities'
 import toTitleCase from '../functions/TitleCase'
 
@@ -12,18 +12,18 @@ class SelectorScreen extends React.Component {
     super(props)
     this.state = {
       cityLocations: [],
-      pickerLocation: '',
-      userLocation: undefined
+      pickerLocation: ''
     }
   }
 
   static navigationOptions = {
     title: 'Discover',
     headerStyle: {
-      backgroundColor: '#2C1654',
+      backgroundColor: '#FFAD00',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
+      fontSize: 25,
       fontWeight: 'bold',
       color: '#fff'
     }
@@ -51,17 +51,7 @@ class SelectorScreen extends React.Component {
 
         <StatusBar barStyle="light-content" />
 
-        <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FF6464" }}>
-          <Button
-            title="Use Current Location"
-            onPress={() => navigate('MapScreen')}
-            // if userlocation hasnt been changed from its default undfined value button is disabaled
-            disabled={this.state.userLocation === undefined}
-          />
-        </View>
-
-        <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#FDBF50" }}>
-          <Text style={{ alignSelf: "center" }}>or browse cities</Text>
+        <View style={{ flex: 1, justifyContent: "center", backgroundColor: "#ECEDE3" }}>
 
           <Picker
             selectedValue={this.state.pickerLocation}
@@ -71,7 +61,7 @@ class SelectorScreen extends React.Component {
               this.setState({ pickerLocation: this.state.cityLocations[itemIndex] })
               console.log(this.state.pickerLocation, "picker location")
             }
-              
+
             }>
 
             {this.state.cityLocations.map((element) => {
@@ -80,21 +70,23 @@ class SelectorScreen extends React.Component {
               )
             })}
           </Picker>
-        </View>
 
-        <View style={{ flex: 1, justifyContent: "space-around", backgroundColor: "#00BE65" }}>
-          <Button
-            title={`Go to ${this.state.pickerLocation.name}`}
+          <TouchableOpacity
             onPress={() => navigate('MapScreen', {
               locationName: this.state.pickerLocation.name,
               initialRegion: {
                 latitude: this.state.pickerLocation.latitude,
                 longitude: this.state.pickerLocation.longitude,
-                latitudeDelta: 0.1,
-                longitudeDelta: 0.1,
+                latitudeDelta: 0.08,
+                longitudeDelta: 0.08,
               }
             })}
-          />
+            color="#FFAD00"
+            style={{ backgroundColor: '#FFAD00', marginHorizontal: 30, marginBottom: 20 }}
+          >
+            <Text style={{ textAlign: 'center', padding: 10, color: '#ECEDE3', fontSize: 18 }}>{`Go to ${this.state.pickerLocation.name}`}</Text>
+          </TouchableOpacity>
+
         </View>
 
       </View>
