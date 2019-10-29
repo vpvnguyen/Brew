@@ -2,6 +2,7 @@ import React from 'react'
 import { View, StyleSheet, StatusBar, Text, Button } from 'react-native'
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps'
 import promotions from '../api/promotions'
+import toTitleCase from '../functions/TitleCase'
 
 class MapScreen extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class MapScreen extends React.Component {
     //Header style with paramaters from navigation
     static navigationOptions = ({ navigation }) => {
         return {
-            title: navigation.getParam('locationName'),
+            title: toTitleCase(navigation.getParam('locationName')),
             headerStyle: {
                 backgroundColor: '#2C1654',
             },

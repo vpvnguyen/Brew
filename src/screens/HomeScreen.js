@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button, Picker, StatusBar } from 'react-native'
 import allCities from '../api/allCities'
+import toTitleCase from '../functions/TitleCase'
 
 // Hides unimportant warning
 import { YellowBox } from 'react-native'
@@ -75,7 +76,7 @@ class HomeScreen extends React.Component {
 
             {this.state.cityLocations.map((element) => {
               return (
-                <Picker.Item label={element.name} value={element} key={element.name} />
+                <Picker.Item label={toTitleCase(element.name)} value={element} key={element.name} />
               )
             })}
           </Picker>
