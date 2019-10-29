@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import Geolocation from 'react-native-geolocation-service';
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -33,6 +34,23 @@ class HomeScreen extends Component {
     //       longitudeDelta: 0.1,
     //     }
     //   }
+
+    componentDidMount() {
+        // Instead of navigator.geolocation, just use Geolocation.
+        // if (hasLocationPermission) {
+            Geolocation.getCurrentPosition(
+                (position) => {
+                    console.log(position, "geolocation coords");
+                },
+                (error) => {
+                    // See error code charts below.
+                    console.log(error.code, error.message);
+                },
+                { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+            );
+        // }
+    }
+
     render() {
         const { navigate } = this.props.navigation
         return (
