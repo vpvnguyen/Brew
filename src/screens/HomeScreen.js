@@ -97,7 +97,7 @@ class HomeScreen extends Component {
                     <Button
                         title={`Or Use Current Location`}
                         onPress={() => navigate('MapScreen',     {
-                          locationName: 'dana point',
+                          locationName: 'Current Location',
                           initialRegion: {
                             latitude: this.state.location.coords.latitude,
                             longitude: this.state.location.coords.longitude,

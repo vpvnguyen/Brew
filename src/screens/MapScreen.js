@@ -39,6 +39,8 @@ class MapScreen extends React.Component {
         console.log(this.state, "promotions this state")
     }
 
+    // if getParam('locationName) !== 'undefined' this.getallpromotions
+    // else send coords to backends
     componentDidMount() {
         this.getAllPromotions()
     }
