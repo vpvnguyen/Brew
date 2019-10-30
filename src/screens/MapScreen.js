@@ -69,7 +69,8 @@ class MapScreen extends React.Component {
                             >
                                 <Callout
                                 onPress={() => navigate('MoreInfo', {
-                                    business
+                                    business,
+                                    city: navigation.getParam('locationName')
                                 })}
                                 >
                                     <View style={styles.callout}>
