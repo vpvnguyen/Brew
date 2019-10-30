@@ -82,11 +82,10 @@ class HomeScreen extends Component {
     render() {
         const { navigate } = this.props.navigation
         return (
-            <View style={{ flex: 1, backgroundColor: '#ECEDE3' }}>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ flex: 1, backgroundColor: '#ECEDE3', justifyContent: 'center', alignItems: 'center'  }}>
+
                     <Image source={require('../images/brew.png')} />
-                </View>
-                <View style={{ flex: 1 }}>
+
                     <TouchableOpacity
                         onPress={() => navigate('SelectorScreen')}
                         color="#FFAD00"
@@ -118,7 +117,7 @@ class HomeScreen extends Component {
                         // if userlocation hasnt been changed from its default undfined value button is disabaled
                         disabled={this.state.userLocation !== undefined}
                     />
-                </View>
+
             </View>
         )
     }
