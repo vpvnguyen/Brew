@@ -73,9 +73,9 @@ class MapScreen extends React.Component {
                                 })}
                                 >
                                     <View style={styles.callout}>
-                                        <Text style={{ fontSize: 18 }}>{business.name}</Text>
+                                        
                                         <Button
-                                            title="Promotions"
+                                            title={business.name}
                                         />
                                     </View>
                                 </Callout>
@@ -99,8 +99,8 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
     },
     callout: {
-        width: 250,
-        height: 100,
+        width: 225,
+        height: 75,
         alignItems: 'center',
         justifyContent: 'center'
     }
