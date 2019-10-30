@@ -79,7 +79,7 @@ class HomeScreen extends Component {
               this.setState({ location: error, loading: false });
               console.log(error);
             },
-            { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000, distanceFilter: 50, forceRequestLocation: true }
+            { enableHighAccuracy: true, maximumAge: 10000, distanceFilter: 50, forceRequestLocation: true }
           );
         });
       }
