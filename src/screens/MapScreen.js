@@ -71,8 +71,7 @@ class MapScreen extends React.Component {
                                 })}
                                 >
                                     <View style={styles.callout}>
-                                        <Text style={{ fontSize: 17 }}>{business.name}</Text>
-                                        <Text>{business.address}</Text>
+                                        <Text style={{ fontSize: 18 }}>{business.name}</Text>
                                         <Button
                                             title="Promotions"
                                         />
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
         width: 250,
         height: 100,
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'center'
     }
 })
 

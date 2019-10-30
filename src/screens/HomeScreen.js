@@ -26,15 +26,6 @@ class HomeScreen extends Component {
     }
     // GeoLocation button needs to get coordinates, then get city of coordinates and pass to the map screen
     // In this format
-    // {
-    //     locationName: this.state.pickerLocation.name,
-    //     initialRegion: {
-    //       latitude: this.state.pickerLocation.latitude,
-    //       longitude: this.state.pickerLocation.longitude,
-    //       latitudeDelta: 0.1,
-    //       longitudeDelta: 0.1,
-    //     }
-    //   }
 
     hasLocationPermission = async () => {
         if (Platform.OS === 'ios' ||
@@ -105,7 +96,15 @@ class HomeScreen extends Component {
                     </TouchableOpacity>
                     <Button
                         title={`Or Use Current Location`}
-                        onPress={() => navigate('MapScreen')}
+                        onPress={() => navigate('MapScreen',     {
+                          locationName: 'dana point',
+                          initialRegion: {
+                            latitude: this.state.location.coords.latitude,
+                            longitude: this.state.location.coords.longitude,
+                            latitudeDelta: 0.1,
+                            longitudeDelta: 0.1,
+                          }
+                        })}
                         // if userlocation hasnt been changed from its default undfined value button is disabaled
                         disabled={this.state.userLocation !== undefined}
                     />
