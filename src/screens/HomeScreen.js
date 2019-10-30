@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Button, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native'
 import Geolocation from 'react-native-geolocation-service';
 
 class HomeScreen extends Component {
@@ -67,7 +67,7 @@ class HomeScreen extends Component {
               console.log(position);
             },
             (error) => {
-              this.setState({ location: error, loading: false });
+              this.setState({ location: undefined, loading: false });
               console.log(error);
             },
             { enableHighAccuracy: true, maximumAge: 10000, distanceFilter: 50, forceRequestLocation: true }
@@ -96,15 +96,25 @@ class HomeScreen extends Component {
                     </TouchableOpacity>
                     <Button
                         title={`Or Use Current Location`}
-                        onPress={() => navigate('MapScreen',     {
-                          locationName: 'Current Location',
-                          initialRegion: {
-                            latitude: this.state.location.coords.latitude,
-                            longitude: this.state.location.coords.longitude,
-                            latitudeDelta: 0.1,
-                            longitudeDelta: 0.1,
+                        onPress={() => {
+                          if (this.state.location === undefined) {
+                            Alert.alert(
+                              'Enable GeoLocation',
+                              'Settings => Privacy => Location Services => Brew => While Using the App => Reload App')
                           }
-                        })}
+                          else {
+                            navigate('MapScreen',{
+                              locationName: 'Current Location',
+                              initialRegion: {
+                                latitude: this.state.location.coords.latitude,
+                                longitude: this.state.location.coords.longitude,
+                                latitudeDelta: 0.08,
+                                longitudeDelta: 0.08,
+                              }
+                            })
+                          }
+                        }  
+                      }
                         // if userlocation hasnt been changed from its default undfined value button is disabaled
                         disabled={this.state.userLocation !== undefined}
                     />
