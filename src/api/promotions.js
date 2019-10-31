@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'https://quiet-lake-29855.herokuapp.com/api/promotion/all'
+    baseURL: 'http://ec2-3-14-27-130.us-east-2.compute.amazonaws.com/api/promotion/all'
 });
