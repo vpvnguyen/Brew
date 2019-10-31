@@ -89,7 +89,7 @@ class HomeScreen extends Component {
                     <TouchableOpacity
                         onPress={() => navigate('SelectorScreen')}
                         color="#FFAD00"
-                        style={{ backgroundColor: '#FFAD00', marginHorizontal: 30, marginBottom: 20 }}
+                        style={{ backgroundColor: '#FFAD00', marginHorizontal: 30, marginBottom: 20, width: 200 }}
                     >
                         <Text style={{ textAlign: 'center', padding: 10, color: '#ECEDE3', fontSize: 18 }}>Discover</Text>
                     </TouchableOpacity>
@@ -114,8 +114,6 @@ class HomeScreen extends Component {
                           }
                         }  
                       }
-                        // if userlocation hasnt been changed from its default undfined value button is disabaled
-                        disabled={this.state.userLocation !== undefined}
                     />
 
             </View>

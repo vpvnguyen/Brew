@@ -84,7 +84,7 @@ class SelectorScreen extends React.Component {
             color="#FFAD00"
             style={{ backgroundColor: '#FFAD00', marginHorizontal: 30, marginBottom: 20 }}
           >
-            <Text style={{ textAlign: 'center', padding: 10, color: '#ECEDE3', fontSize: 18 }}>{`Go to ${this.state.pickerLocation.name}`}</Text>
+            <Text style={{ textAlign: 'center', padding: 10, color: '#ECEDE3', fontSize: 18 }}>{`Brew!`}</Text>
           </TouchableOpacity>
 
         </View>

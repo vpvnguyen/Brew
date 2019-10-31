@@ -16,6 +16,7 @@
     "react-native-geolocation-service": "^3.1.0",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-maps": "0.26.1",
+    "react-native-splash-screen": "^3.2.0",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.10.2"
   },
