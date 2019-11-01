@@ -72,11 +72,14 @@ class MapScreen extends React.Component {
                                     business,
                                     city: navigation.getParam('locationName')
                                 })}
+                                tooltip={true}
                                 >
                                     <View style={styles.callout}>
                                         
                                         <Button
                                             title={business.name}
+                                            color="white"
+                                            
                                         />
                                     </View>
                                 </Callout>
@@ -103,7 +106,10 @@ const styles = StyleSheet.create({
         width: 225,
         height: 75,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: 10,
+        backgroundColor: '#FFAD00',
+        opacity: 0.9
     }
 })
 
