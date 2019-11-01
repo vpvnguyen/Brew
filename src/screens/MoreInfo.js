@@ -79,14 +79,31 @@ class MoreInfo extends React.Component {
 
             {this.state.business_id !== null && 
 
-            <View style={{ alignItems: 'center' }}>
+            <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+
+                <View style={styles.imageView}>
             <Image style={{ width: 200, height: 200, resizeMode: 'contain' }} source={{ uri: this.state.images }} />
-            <Text>
-                Price: {this.state.price}, {this.state.reviews} on Yelp 
-            </Text>
-            <Text>
-            {this.state.category_1}
-            </Text>
+            </View>
+
+            <View style={styles.promotionView}>
+                <Text>
+                    Promotions
+                </Text>
+                <Text style={styles.bigFont}>
+                    {this.state.promotion_name}
+                </Text>
+                <Text style={styles.bigFont}>
+                    {this.state.description}
+                </Text>
+                <Text style={styles.bigFont}>
+                    Required Volume: {this.state.qtypeople} people
+                </Text>
+
+                </View>
+
+            <View style={styles.infoView}>
+
+
             <Text>Hours:</Text>
             <Text>
                 Sunday: {this.state.sunday_hours}
@@ -109,20 +126,7 @@ class MoreInfo extends React.Component {
             <Text>
             Saturday: {this.state.saturday_hours}
             </Text>
-
-                <Text>
-                    Promotions
-                </Text>
-                <Text>
-                    {this.state.promotion_name}
-                </Text>
-                <Text>
-                    {this.state.description}
-                </Text>
-                <Text>
-                    Required Volume: {this.state.qtypeople} people
-                </Text>
-
+            </View>
 
             </View>    
 
@@ -132,6 +136,21 @@ class MoreInfo extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    imageView: {
+        flex: 1
+    },
+    infoView: {
+        flex: 1,
+        alignItems: 'center'
+    },
+    promotionView: {
+        flex: 1,
+        alignItems: 'center'
+    },
+    bigFont: {
+        fontSize: 22
+    }
+})
 
 export default MoreInfo
