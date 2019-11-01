@@ -46,25 +46,25 @@ class MoreInfo extends React.Component {
     getAllPromotions = async () => {
         const response = await yelp.get('')
         this.setState({
-            business_id: response.data[0].business_id,
-            id: response.data[0].id,
-            promotion_name: response.data[0].promotion_name,
-            qtypeople: response.data[0].qtypeople,
-            description: response.data[0].description,
-            business_name: response.data[0].business_name,
-            category_1: response.data[0].category_1,
-            category_2: response.data[0].category_2,
-            category_3: response.data[0].category_3,
-            price: response.data[0].price,
-            reviews: response.data[0].reviews,
-            monday_hours: response.data[0].monday_hours,
-            tuesday_hours: response.data[0].tuesday_hours,
-            wednesday_hours: response.data[0].wednesday_hours,
-            thursday_hours: response.data[0].thursday_hours,
-            friday_hours: response.data[0].friday_hours,
-            saturday_hours: response.data[0].saturday_hours,
-            sunday_hours: response.data[0].sunday_hours,
-            images: response.data[0].images
+            business_id: response.data[1].business_id,
+            id: response.data[1].id,
+            promotion_name: response.data[1].promotion_name,
+            qtypeople: response.data[1].qtypeople,
+            description: response.data[1].description,
+            business_name: response.data[1].business_name,
+            category_1: response.data[1].category_1,
+            category_2: response.data[1].category_2,
+            category_3: response.data[1].category_3,
+            price: response.data[1].price,
+            reviews: response.data[1].reviews,
+            monday_hours: response.data[1].monday_hours,
+            tuesday_hours: response.data[1].tuesday_hours,
+            wednesday_hours: response.data[1].wednesday_hours,
+            thursday_hours: response.data[1].thursday_hours,
+            friday_hours: response.data[1].friday_hours,
+            saturday_hours: response.data[1].saturday_hours,
+            sunday_hours: response.data[1].sunday_hours,
+            images: response.data[1].images
         })
     }
 
@@ -82,7 +82,7 @@ class MoreInfo extends React.Component {
             <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
 
                 <View style={styles.imageView}>
-            <Image style={{ width: 200, height: 200, resizeMode: 'contain' }} source={{ uri: this.state.images }} />
+            <Image style={{ width: 300, height: 300, resizeMode: 'contain' }} source={{ uri: this.state.images }} />
             </View>
 
             <View style={styles.promotionView}>
@@ -138,15 +138,18 @@ class MoreInfo extends React.Component {
 
 const styles = StyleSheet.create({
     imageView: {
-        flex: 1
+        flex: 1,
+        justifyContent: 'center'
     },
     infoView: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     promotionView: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     bigFont: {
         fontSize: 22

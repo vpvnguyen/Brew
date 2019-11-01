@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button, Picker, StatusBar, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Button, Picker, StatusBar, TouchableOpacity, Image } from 'react-native'
 import allCities from '../api/allCities'
 import toTitleCase from '../functions/TitleCase'
 
