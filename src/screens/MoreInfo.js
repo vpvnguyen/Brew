@@ -86,16 +86,16 @@ class MoreInfo extends React.Component {
             </View>
 
             <View style={styles.promotionView}>
-                <Text>
+                <Text style={styles.bigFont}>
                     Promotions
                 </Text>
-                <Text style={styles.bigFont}>
+                <Text style={styles.promotionFont}>
                     {this.state.promotion_name}
                 </Text>
-                <Text style={styles.bigFont}>
+                <Text style={styles.promotionFont}>
                     {this.state.description}
                 </Text>
-                <Text style={styles.bigFont}>
+                <Text style={styles.promotionFont}>
                     Required Volume: {this.state.qtypeople} people
                 </Text>
 
@@ -104,26 +104,26 @@ class MoreInfo extends React.Component {
             <View style={styles.infoView}>
 
 
-            <Text>Hours:</Text>
-            <Text>
+            <Text style={styles.hoursTitleStyle}>Hours:</Text>
+            <Text style={styles.hoursStyle}>
                 Sunday: {this.state.sunday_hours}
             </Text>
-            <Text>
+            <Text style={styles.hoursStyle}>
                 Monday: {this.state.monday_hours}
             </Text>
-            <Text>
+            <Text style={styles.hoursStyle}>
                 Tuesday: {this.state.tuesday_hours}
             </Text>
-            <Text>
+            <Text style={styles.hoursStyle}>
                 Wednesday: {this.state.wednesday_hours}
             </Text>
-            <Text>
+            <Text style={styles.hoursStyle}>
                 Thursday: {this.state.thursday_hours}
             </Text>
-            <Text>
+            <Text style={styles.hoursStyle}>
                 Friday: {this.state.friday_hours}
             </Text>
-            <Text>
+            <Text style={styles.hoursStyle}>
             Saturday: {this.state.saturday_hours}
             </Text>
             </View>
@@ -149,7 +149,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     bigFont: {
-        fontSize: 22
+        fontSize: 33
+    },
+    promotionFont: {
+        fontSize: 16
+    },
+    hoursStyle: {
+        fontSize: 15
+    },
+    hoursTitleStyle: {
+        fontSize: 20
     }
 })
 
